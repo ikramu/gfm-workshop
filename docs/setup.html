@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Setup – Genomic Foundation Models Workshop | KAUST</title>
+  <meta name="description" content="Environment setup instructions – Conda, PyTorch, Transformers, PEFT"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<nav>
+  <div class="nav-container">
+    <div class="logo">GFM Workshop</div>
+    <ul>
+      <li><a href="index.html">Overview</a></li>
+      <li><a href="schedule.html">Schedule</a></li>
+      <li><a href="materials.html">Materials</a></li>
+      <li><a href="models.html">Models</a></li>
+      <li><a href="setup.html" class="active">Setup</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+
+  <section class="hero" style="padding: 6rem 1.5rem 4rem;">
+    <div class="container">
+      <h1>Environment Setup</h1>
+      <p class="subtitle">Get your laptop ready for the hands-on labs</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="card" style="max-width:780px; margin:0 auto 3rem;">
+        <h3>Recommended – Quick Start</h3>
+        <pre style="background:#f8f9fa; padding:1.25rem; border-radius:6px; font-size:0.95rem; overflow-x:auto; margin:1.25rem 0;">
+cd lecture_slides/3.day2_before_lunch/notebooks
+bash setup_env.sh
+conda activate genomic-llm-finetuning</pre>
+      </div>
+
+      <div class="card-grid" style="margin-bottom:3rem;">
+
+        <div class="card">
+          <h3>1. Requirements</h3>
+          <ul style="line-height:1.8; margin-top:1rem;">
+            <li>Python 3.11+</li>
+            <li>Conda or Mamba</li>
+            <li>8–16 GB RAM</li>
+            <li>~4–6 GB disk space</li>
+            <li>GPU strongly recommended (Day 2)</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>2. Manual install (if needed)</h3>
+          <pre style="background:#f8f9fa; padding:1.25rem; border-radius:6px; font-size:0.92rem; overflow-x:auto; margin:1rem 0;">
+conda create -n genomic-llm-finetuning python=3.11 -y
+conda activate genomic-llm-finetuning
+
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+pip install transformers==4.45.* peft==0.12.* bitsandbytes accelerate
+pip install jupyter pandas numpy scikit-learn matplotlib seaborn umap-learn</pre>
+        </div>
+
+      </div>
+
+      <div class="card" style="background:#d4edda; border-color:#198754; color:#0f5132;">
+        <h3 style="color:#198754;">GPU access tip</h3>
+        <p style="margin-top:0.8rem;">
+          Day 2 fine-tuning is <strong>much faster</strong> with a GPU.<br>
+          No local GPU? → Use Google Colab (free T4/P100) or Kaggle notebook.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<iframe src="footer.html" style="border: none; width: 100%; background: #0d1b2a; margin-top: 6rem;"></iframe>
+
+</body>
+</html>

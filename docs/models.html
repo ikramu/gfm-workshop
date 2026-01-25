@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Models – Genomic Foundation Models Workshop | KAUST</title>
+  <meta name="description" content="Overview of DNABERT-2, Nucleotide Transformer variants, and Mistral-DNA models used in the workshop"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<nav>
+  <div class="nav-container">
+    <div class="logo">GFM Workshop</div>
+    <ul>
+      <li><a href="index.html">Overview</a></li>
+      <li><a href="schedule.html">Schedule</a></li>
+      <li><a href="materials.html">Materials</a></li>
+      <li><a href="models.html" class="active">Models</a></li>
+      <li><a href="setup.html">Setup</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+
+  <section class="hero" style="padding: 6rem 1.5rem 4rem;">
+    <div class="container">
+      <h1>Genomic Foundation Models</h1>
+      <p class="subtitle">Pre-trained models used during the workshop – all available on Hugging Face</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="card-grid">
+
+        <div class="card">
+          <h3>DNABERT-2</h3>
+          <p style="color:#6c757d; font-size:0.95rem; margin:0.5rem 0 1rem;"><a href="https://huggingface.co/zhihan1996/DNABERT-2-117M" target="_blank" style="color:#0d6efd; text-decoration:none; font-weight:500;">zhihan1996/DNABERT-2-117M</a></p>
+          <ul style="list-style:none; line-height:1.7; font-size:0.98rem;">
+            <li><strong>Parameters:</strong> 117M</li>
+            <li><strong>Architecture:</strong> BERT + ALiBi</li>
+            <li><strong>Tokenizer:</strong> BPE</li>
+            <li><strong>Max length:</strong> 512 nt</li>
+            <li><strong>Best for:</strong> General exploration</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Nucleotide Transformer</h3>
+          <p style="color:#6c757d; font-size:0.95rem; margin:0.5rem 0 1rem;"><a href="https://huggingface.co/InstaDeepAI" target="_blank" style="color:#0d6efd; text-decoration:none; font-weight:500;">InstaDeepAI/nucleotide-transformer-*</a></p>
+          <ul style="list-style:none; line-height:1.7; font-size:0.98rem;">
+            <li><strong>Variants:</strong> 50M, 100M, 500M, multi-species</li>
+            <li><strong>Architecture:</strong> Transformer (k-mer + rotary)</li>
+            <li><strong>Training:</strong> MLM on diverse genomes</li>
+            <li><strong>Best for:</strong> Transfer learning & classification</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Mistral-DNA</h3>
+          <p style="color:#6c757d; font-size:0.95rem; margin:0.5rem 0 1rem;"><a href="https://huggingface.co/RaphaelMourad" target="_blank" style="color:#0d6efd; text-decoration:none; font-weight:500;">RaphaelMourad/Mistral-DNA-*</a></p>
+          <ul style="list-style:none; line-height:1.7; font-size:0.98rem;">
+            <li><strong>Parameters:</strong> ~17–138M (MoE variants)</li>
+            <li><strong>Architecture:</strong> Mistral-based</li>
+            <li><strong>Memory footprint:</strong> Very low</li>
+            <li><strong>Best for:</strong> Fast LoRA fine-tuning, limited GPU</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="card" style="margin-top:3rem; background:#f1f8ff; border-color:#0d6efd;">
+        <h3 style="color:#0d6efd;">Quick model selection guide</h3>
+        <ul style="margin-top:1rem; line-height:1.8;">
+          <li><strong>Learning & exploration</strong> → DNABERT-2</li>
+          <li><strong>Classification & transfer</strong> → Nucleotide Transformer (100M or 500M)</li>
+          <li><strong>Limited compute / fast fine-tuning</strong> → Mistral-DNA</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<iframe src="footer.html" style="border: none; width: 100%; background: #0d1b2a; margin-top: 6rem;"></iframe>
+
+</body>
+</html>

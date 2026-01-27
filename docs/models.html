@@ -29,7 +29,7 @@
 
 <main id="main">
 
-  <section class="hero" style="padding: 6rem 1.5rem 4rem;">
+  <section class="hero">
     <div class="container">
       <h1>Genomic Foundation Models</h1>
       <p class="subtitle">Pre-trained models used during the workshop – all available on Hugging Face</p>
@@ -65,6 +65,18 @@
         </div>
 
         <div class="card">
+          <h3>HyenaDNA</h3>
+          <p style="color:#6c757d; font-size:0.95rem; margin:0.5rem 0 1rem;"><a href="https://huggingface.co/collections/LongSafari/hyenadna-models" target="_blank" style="color:#0d6efd; text-decoration:none; font-weight:500;">LongSafari/hyenadna-*</a></p>
+          <ul style="list-style:none; line-height:1.7; font-size:0.98rem;">
+            <li><strong>Architecture:</strong> Hyena (sub-quadratic long-range)</li>
+            <li><strong>Context:</strong> Up to 160k nucleotides</li>
+            <li><strong>Tokenizer:</strong> Single-nucleotide (character-level)</li>
+            <li><strong>Training:</strong> Autoregressive on human genome</li>
+            <li><strong>Best for:</strong> Long-range genomic tasks, embedding visualization</li>
+          </ul>
+        </div>
+
+        <div class="card">
           <h3>Mistral-DNA</h3>
           <p style="color:#6c757d; font-size:0.95rem; margin:0.5rem 0 1rem;"><a href="https://huggingface.co/RaphaelMourad" target="_blank" style="color:#0d6efd; text-decoration:none; font-weight:500;">RaphaelMourad/Mistral-DNA-*</a></p>
           <ul style="list-style:none; line-height:1.7; font-size:0.98rem;">
@@ -82,6 +94,7 @@
         <ul style="margin-top:1rem; line-height:1.8;">
           <li><strong>Learning & exploration</strong> → DNABERT-2</li>
           <li><strong>Classification & transfer</strong> → Nucleotide Transformer (100M or 500M)</li>
+          <li><strong>Long-range sequence tasks</strong> → HyenaDNA</li>
           <li><strong>Limited compute / fast fine-tuning</strong> → Mistral-DNA</li>
         </ul>
       </div>
@@ -91,7 +104,7 @@
 
 </main>
 
-<iframe src="footer.html" style="border: none; width: 100%; background: #0d1b2a; margin-top: 6rem;"></iframe>
+<iframe src="footer.html" style="border: none; width: 100%; height: 220px; overflow: hidden; background: #0d1b2a; margin-top: 6rem;"></iframe>
 
 </body>
 </html>

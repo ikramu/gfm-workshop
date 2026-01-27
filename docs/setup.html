@@ -202,6 +202,50 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* Copyable code block wrapper */
+    .code-copyable {
+      position: relative;
+    }
+    .code-copyable .code-block {
+      padding-right: 3.5rem;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      background: var(--color-primary);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      transition: background 0.2s;
+      opacity: 0;
+    }
+    .code-copyable:hover .copy-btn {
+      opacity: 1;
+    }
+    .copy-btn:hover {
+      background: var(--color-primary-d);
+    }
+    .copy-btn svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    /* GPU callout copy button overrides */
+    .callout-gpu .code-copyable .copy-btn {
+      background: #198754;
+    }
+    .callout-gpu .code-copyable .copy-btn:hover {
+      background: #157347;
+    }
   </style>
 </head>
 <body>
@@ -238,7 +282,10 @@
         <div class="callout callout-gpu">
           <h3>GPU access on Ibex</h3>
           <p>Each student is assigned priority GPU access by the Ibex team. Request an interactive GPU node before starting:</p>
-          <pre class="code-block" style="background:#c3e6cb; color:#0f5132; border-color:#198754;">srun --nodes=1 --cpus-per-task=8 --mem=60GB --gres=gpu:v100:1 --time=10:00:00 --pty bash -i</pre>
+          <div class="code-copyable">
+            <pre class="code-block" style="background:#c3e6cb; color:#0f5132; border-color:#198754;">srun --nodes=1 --cpus-per-task=8 --mem=60GB --gres=gpu:v100:1 --time=10:00:00 --pty bash -i</pre>
+            <button class="copy-btn" aria-label="Copy to clipboard"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"/><path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"/></svg> Copy</button>
+          </div>
           <p class="hint" style="color:#0f5132;">Once on the GPU node, follow the steps below.</p>
         </div>
 
@@ -259,7 +306,7 @@
           </div>
           <div class="req-item">
             <svg class="req-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            ~4–6 GB disk space
+            40+ GB disk space recommended
           </div>
           <div class="req-item">
             <svg class="req-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
@@ -278,8 +325,11 @@
               <span class="code-label">Terminal</span>
               <h3>Request a GPU node</h3>
               <p>From the Ibex login node, request an interactive session with a V100 GPU.</p>
-              <pre class="code-block">srun --nodes=1 --cpus-per-task=8 --mem=60GB \
+              <div class="code-copyable">
+                <pre class="code-block">srun --nodes=1 --cpus-per-task=8 --mem=60GB \
      --gres=gpu:v100:1 --time=10:00:00 --pty bash -i</pre>
+                <button class="copy-btn" aria-label="Copy to clipboard"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"/><path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"/></svg> Copy</button>
+              </div>
             </div>
           </div>
 
@@ -289,8 +339,11 @@
               <span class="code-label">Terminal</span>
               <h3>Create the conda environment</h3>
               <p>Run the setup script — it uses <strong>mamba</strong> if available, otherwise falls back to conda.</p>
-              <pre class="code-block">cd jupyter-notebooks/env_setup
+              <div class="code-copyable">
+                <pre class="code-block">cd jupyter-notebooks/env_setup
 bash setup_env.sh</pre>
+                <button class="copy-btn" aria-label="Copy to clipboard"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"/><path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"/></svg> Copy</button>
+              </div>
             </div>
           </div>
 
@@ -299,7 +352,10 @@ bash setup_env.sh</pre>
             <div class="step-content">
               <span class="code-label">Terminal</span>
               <h3>Activate the environment</h3>
-              <pre class="code-block">conda activate gfm-workshop</pre>
+              <div class="code-copyable">
+                <pre class="code-block">conda activate gfm-workshop</pre>
+                <button class="copy-btn" aria-label="Copy to clipboard"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"/><path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"/></svg> Copy</button>
+              </div>
             </div>
           </div>
 
@@ -308,7 +364,10 @@ bash setup_env.sh</pre>
             <div class="step-content">
               <span class="code-label">Terminal</span>
               <h3>Start JupyterLab</h3>
-              <pre class="code-block">bash start_jupyter_server_password_abc123.sh</pre>
+              <div class="code-copyable">
+                <pre class="code-block">bash start_jupyter_server_password_abc123.sh</pre>
+                <button class="copy-btn" aria-label="Copy to clipboard"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"/><path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"/></svg> Copy</button>
+              </div>
               <p class="hint">JupyterLab starts on port <strong>8888</strong> with password <strong>abc123</strong>. Access it from your browser using the GPU node hostname.</p>
             </div>
           </div>
@@ -322,7 +381,8 @@ bash setup_env.sh</pre>
             <p style="font-size:0.95rem; color:var(--color-text-light); margin-bottom:0.75rem;">
               Create the environment and install packages manually:
             </p>
-            <pre class="code-block">conda create -n gfm-workshop python=3.11 -y
+            <div class="code-copyable">
+              <pre class="code-block">conda create -n gfm-workshop python=3.11 -y
 conda activate gfm-workshop
 
 pip install torch==2.9.1 torchvision torchaudio \
@@ -336,6 +396,8 @@ pip install transformers==4.57.3 \
 pip install jupyter pandas==2.3.3 \
     numpy==2.3.5 scikit-learn==1.7.2 \
     matplotlib seaborn umap-learn tqdm</pre>
+              <button class="copy-btn" aria-label="Copy to clipboard"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"/><path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"/></svg> Copy</button>
+            </div>
           </div>
         </details>
 
@@ -346,6 +408,20 @@ pip install jupyter pandas==2.3.3 \
 </main>
 
 <iframe src="footer.html" style="border: none; width: 100%; height: 220px; overflow: hidden; background: #0d1b2a; margin-top: 6rem;"></iframe>
+
+<script>
+document.querySelectorAll('.copy-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const pre = btn.closest('.code-copyable').querySelector('pre');
+    navigator.clipboard.writeText(pre.textContent.trim()).then(() => {
+      const orig = btn.innerHTML;
+      btn.innerHTML = '<svg viewBox="0 0 20 20" fill="currentColor" width="12" height="12"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Copied!';
+      btn.style.opacity = '1';
+      setTimeout(() => { btn.innerHTML = orig; btn.style.opacity = ''; }, 1500);
+    });
+  });
+});
+</script>
 
 </body>
 </html>
